@@ -56,15 +56,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_53CC7A6703924EC18188A888599C8129 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_63259B8B376E4296A7041442AE02AA67 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_396CA14A937F4C76BAE18CEF26C3401F }}
-
+          app-name: 'Bazaar'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package:  .
+          
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'Bazaar'
-          slot-name: 'Production'
+          slot-name: 'Production
           package: .
           
